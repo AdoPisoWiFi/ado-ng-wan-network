@@ -1,18 +1,18 @@
 
-<div class="input-demo checkbox-demo padd-bottom">
-  <label class="checkbox-inline custom-checkbox nowrap">
-    <input type="checkbox" name="active" ng-model="$ctrl.settings.wan_interface.dynamic">
-    <span>
-      Use Dynamic IP Address (DHCP)
-    </span>
-  </label>
-</div>
-
-<div>
-  <save-config-btn config="{wan_interface: {dynamic: $ctrl.settings.wan_interface.dynamic}}" device="$ctrl.device" ng-show="$ctrl.config.wan_interface.dynamic != $ctrl.settings.wan_interface.dynamic && $ctrl.settings.wan_interface.dynamic">Save Changes</save-config-btn>
-</div>
-
 <form name="wanForm">
+
+  <div class="input-demo checkbox-demo padd-bottom">
+    <label class="checkbox-inline custom-checkbox nowrap">
+      <input type="checkbox" name="active" ng-model="$ctrl.settings.wan_interface.dynamic">
+      <span>
+        Use Dynamic IP Address (DHCP)
+      </span>
+    </label>
+  </div>
+
+  <!--<div>-->
+  <!--  <save-config-btn config="{wan_interface: {dynamic: $ctrl.settings.wan_interface.dynamic}}" device="$ctrl.device" ng-show="$ctrl.config.wan_interface.dynamic != $ctrl.settings.wan_interface.dynamic && $ctrl.settings.wan_interface.dynamic">Save Changes</save-config-btn>-->
+  <!--</div>-->
 
   <div>
 
@@ -28,11 +28,6 @@
       <label>Netmask</label>
       <input ng-disabled="$ctrl.settings.wan_interface.dynamic" class="form-control" name="netmask" ng-model="$ctrl.settings.wan_interface.netmask" required ng-pattern="/\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b/">
     </div>
-
-    <!--<div class="form-group" ng-class="{'has-error': wanForm.broadcast.$invalid}">-->
-    <!--  <label>Broadcast Address</label>-->
-    <!--  <input class="form-control" name="broadcast" ng-model="settings.wan_interface.broadcast" required ng-pattern="/\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b/">-->
-    <!--</div>-->
 
     <div class="form-group" ng-class="{'has-error': wanForm.gateway.$invalid}">
       <label>Default Gateway</label>
