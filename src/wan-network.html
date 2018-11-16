@@ -1,0 +1,51 @@
+
+<div>
+  <label>Enable Dynamic IP Address</label>
+</div>
+<!--<ba-switcher switcher-style="primary" switcher-value="settings.wan_interface.dynamic"></ba-switcher>-->
+<div class="input-demo checkbox-demo padd-bottom">
+  <label class="checkbox-inline custom-checkbox nowrap">
+    <input type="checkbox" name="active" ng-model="$ctrl.settings.wan_interface.dynamic">
+    <span>
+      Enable Dynamic IP Address
+    </span>
+  </label>
+</div>
+
+<div>
+  <save-config-btn config="{wan_interface: {dynamic: $ctrl.settings.wan_interface.dynamic}}" device="$ctrl.device" ng-show="$ctrl.config.wan_interface.dynamic != $ctrl.settings.wan_interface.dynamic && $ctrl.settings.wan_interface.dynamic">Save Changes</save-config-btn>
+</div>
+
+<form name="wanForm">
+
+  <div ng-if="!$ctrl.settings.wan_interface.dynamic">
+
+    <hr>
+    <p>Configure Static IP Address</p>
+
+    <div class="form-group" ng-class="{'has-error': wanForm.ip.$invalid}">
+      <label>IP Address</label>
+      <input class="form-control" name="ip" ng-model="$ctrl.settings.wan_interface.ip" required ng-pattern="/\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b/">
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': wanForm.netmask.$invalid}">
+      <label>Netmask</label>
+      <input class="form-control" name="netmask" ng-model="$ctrl.settings.wan_interface.netmask" required ng-pattern="/\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b/">
+    </div>
+
+    <!--<div class="form-group" ng-class="{'has-error': wanForm.broadcast.$invalid}">-->
+    <!--  <label>Broadcast Address</label>-->
+    <!--  <input class="form-control" name="broadcast" ng-model="settings.wan_interface.broadcast" required ng-pattern="/\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b/">-->
+    <!--</div>-->
+
+    <div class="form-group" ng-class="{'has-error': wanForm.gateway.$invalid}">
+      <label>Default Gateway</label>
+      <input class="form-control" name="gateway" ng-model="$ctrl.settings.wan_interface.gateway" required ng-pattern="/\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b/">
+    </div>
+
+    <save-config-btn device="$ctrl.device" config="{wan_interface: {dynamic: $ctrl.settings.wan_interface.dynamic, ip: $ctrl.settings.wan_interface.ip, netmask: $ctrl.settings.wan_interface.netmask, gateway: $ctrl.settings.wan_interface.gateway}}" ng-disabled="wanForm.$invalid">Save Changes</save-config-btn>
+
+  </div>
+</form>
+
+
